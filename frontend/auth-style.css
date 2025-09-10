@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.login-bg {
+  background: url('images/log-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.register-bg {
+  background: url('images/log-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.auth-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+  color: #ffc107;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-container button:hover {
+  background-color: #e0a800;
+}
+
+.auth-container p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.auth-container a {
+  color: #ffc107;
+  text-decoration: underline;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DINE DIVINE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Vertical Side Menu Buttons -->
+  <div class="top-nav">
+    <button onclick="scrollToSection('main-courses')">Main Courses</button>
+    <button onclick="scrollToSection('desserts')">Desserts</button>
+    <button onclick="scrollToSection('cart-section')">View Cart</button>
+    <button onclick="scrollToSection('reservation')">Reservation</button> 
+    <button onclick="scrollToSection('orderHistory')">Order History</button>
+    <a href="reservation-history.html"><button>Reservation History</button></a>
+
+
+    
+  
+
+    <button onclick="logout()">Logout</button>
+    <a href="login.html"><button>Login</button></a>
+    
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <h1></h1>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+<section id="reservation" class="reservation-section">
+  <h2>Table Reservation</h2>
+  <form id="reservationForm">
+    
+    <label for="resDate">Date:</label>
+    <input type="date" id="resDate" name="resDate" required>
+
+    <label for="resTime">Time:</label>
+    <select id="resTime" name="resTime" required>
+      <!-- Time options will be dynamically populated -->
+    </select>
+
+    <label for="resParty">Party Size:</label>
+    <input type="number" id="resParty" name="resParty" min="1" max="20" required placeholder="e.g. 4">
+
+    <button type="submit">Check Availability</button>
+  </form>
+
+  <div id="confirmationMessage" class="confirmation-message"></div>
+  </section>
+
+  
+  <!-- Main Courses -->
+  <section id="main-courses" class="menu-section">
+    <h2>Main Courses</h2>
+    <div class="menu-grid" id="mainMenu"></div>
+  </section>
+
+  <!-- Desserts -->
+  <section id="desserts" class="menu-section">
+    <h2>Desserts</h2>
+    <div class="menu-grid" id="dessertMenu"></div>
+  </section>
+
+  <!-- Cart Section -->
+  <section id="cart-section" class="cart-section">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <strong>Total:</strong> ₹<span id="totalAmount">0</span>
+    </div>
+  </section>
+
+  <!-- Checkout Section -->
+  <section id="checkout" class="checkout-section">
+    <h2>Checkout & Payment</h2>
+    <form id="checkoutForm">
+      <input type="text" id="custName" placeholder="Full Name" required>
+      <input type="text" id="custAddress" placeholder="Delivery Address" required>
+
+      <label for="paymentMethod">Select Payment Method:</label>
+      <select id="paymentMethod" required>
+        <option value="">-- Choose Payment Method --</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="PhonePe">PhonePe</option>
+        <option value="GPay">GPay</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+      </select>
+
+      <button type="submit">Place Order</button>
+    </form>
+
+    <div id="checkoutMessage" class="confirmation-message"></div>
+  </section>
+
+  <!-- Order History Section -->
+<section id="orderHistory" class="order-history-section">
+  <h2>Your Order History</h2>
+  <ul id="orderList"></ul>
+</section>
+   
+
+
+<!-- Clear Button (only once!) -->
+<button id="clearOrderHistory" class="clear-history-btn">Clear Order History</button>
+
+  
+  
+
+ <!-- Link to JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

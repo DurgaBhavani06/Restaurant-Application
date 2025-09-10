@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservation History</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("images/menu-background.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.25); /* ✨ lighter overlay */
+      padding: 30px;
+      margin: 60px auto;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Your Reservation History</h2>
+    <ul id="reservationList">
+      <li>Loading...</li>
+    </ul>
+    <button onclick="goBackToHome()">Back to Home</button>
+  </div>
+
+  <script>
+    function showReservationHistory() {
+      const reservationList = document.getElementById("reservationList");
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (!currentUser || !currentUser.email) {
+        reservationList.innerHTML = "<li>⚠️ Please log in to view reservations.</li>";
+        return;
+      }
+
+      fetch("http://localhost:5000/api/reservations")
+        .then(res => res.json())
+        .then(allReservations => {
+          const userReservations = allReservations.filter(
+            res => res.user === currentUser.email
+          );
+
+          reservationList.innerHTML = "";
+
+          if (userReservations.length === 0) {
+            reservationList.innerHTML = "<li>No reservations found.</li>";
+            return;
+          }
+
+          userReservations.forEach(res => {
+            const li = document.createElement("li");
+            li.textContent = `📅 ${res.date} ⏰ ${res.time} 👥 Party of ${res.partySize}`;
+            reservationList.appendChild(li);
+          });
+        })
+        .catch(err => {
+          console.error("Failed to load reservations", err);
+          reservationList.innerHTML = "<li>❌ Error loading reservations.</li>";
+        });
+    }
+
+    function goBackToHome() {
+      window.location.href = "index.html";
+    }
+
+    window.onload = showReservationHistory;
+  </script>
+
+</body>
+</html>
