@@ -656,7 +656,7 @@ function showReservationHistory() {
   }
 
   // Fetch and show reservation history
-  fetch("http://localhost:5000/api/reservations")
+  fetch("https://restaurant-application-app.onrender.com")
     .then((res) => res.json())
     .then((allReservations) => {
       const userReservations = allReservations.filter(
