@@ -592,7 +592,7 @@ function handleAuth(event) {
   const password = document.getElementById("password").value;
 
   // Send login request to backend
-  fetch("http://localhost:5000/api/login", {
+  fetch("https://restaurant-application-app.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
